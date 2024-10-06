@@ -1,6 +1,5 @@
 import './App.css'
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import NavBar from './Components/NavBar'
 import Home from './Pages/Home';
 import Cities from './Pages/Cities';
 import NotFound from './Pages/NotFound';
@@ -23,7 +22,6 @@ function App() {
   return (
     <>
     <RouterProvider router={router}></RouterProvider>
-      
     </>
   )
 }
