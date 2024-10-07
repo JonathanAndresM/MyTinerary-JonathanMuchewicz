@@ -1,4 +1,3 @@
-import React from 'react'
 import NavBar from '../Components/NavBar'
 import { Outlet } from 'react-router-dom'
 import Footer from '../Components/Footer'
@@ -6,7 +5,7 @@ import Footer from '../Components/Footer'
 export default function StandarLayout() {
     return (
         <>
-            <div className='h-screen'>
+            <div className='min-h-dvh bg-gray-400 relative w-full'>
                 <NavBar></NavBar>
                 <div><Outlet></Outlet></div>
                 <Footer></Footer>

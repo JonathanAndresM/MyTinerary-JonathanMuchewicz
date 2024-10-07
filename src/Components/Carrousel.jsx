@@ -16,19 +16,20 @@ const cities = [
 ];
 
 export default function Carousel() {
-    const [currentSlider, setCurrentSlide] = useState(0);
+    const [currentSlider, setCurrentSlider] = useState(0);
 
     const slides = [];
     for (let i = 0; i < cities.length; i += 4) {
         slides.push(cities.slice(i, i + 4));
     }
 
+
     const buttonNext = () => {
-        setCurrentSlide((prev) => (prev + 1) % slides.length);
+        setCurrentSlider((prev) => (prev + 1) % slides.length);
     };
 
     const buttonPrev = () => {
-        setCurrentSlide((currentSlider - 1 + slides.length) % slides.length)
+        setCurrentSlider((currentSlider - 1 + slides.length) % slides.length)
     };
 
     useEffect(() => {
@@ -42,24 +43,25 @@ export default function Carousel() {
     }, [currentSlider]);
 
     return (
-        <div className="relative w-full px-5 py-2 h-96 my-4">
+        <div className="relative w-full px-5 py-5 h-96">
             <h3 className="text-2xl text-center my-5 font-serif font-bold">Most popular cities</h3>
             <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 w-full">
                 {slides[currentSlider].map((city, index) => (
                     <div key={index} className="flex justify-center items-center relative rounded-md">
                         <img src={city.img} alt={`City ${city.name}`}
-                            className="w-40 h-20 sm:w-60 sm:h-40 md:w-96 lg:w-full md:h-36 lg:h-56
+                            className="w-48 h-36 sm:w-60 sm:h-36 md:w-96 md:h-36 lg:w-full lg:h-72
                             object-cover rounded-md" />
                         <div className="absolute inset-50 rounded-md 
                         flex items-center justify-center 
                         w-40 h-20 sm:w-60 sm:h-40 md:w-96 lg:w-full md:h-36 lg:h-56 
                         opacity-0 hover:opacity-100">
                             <h2 className="text-white text-2xl font-bold"
-                             style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 10)' }}
+                                style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 10)' }}
                             >{city.name}</h2>
                         </div>
                     </div>
-                ))}
+                ))
+                }
             </div>
             <button
                 onClick={buttonPrev}

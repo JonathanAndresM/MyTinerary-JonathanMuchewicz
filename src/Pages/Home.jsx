@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Carousel from "../Components/Carrousel";
 
 export default function Home() {
