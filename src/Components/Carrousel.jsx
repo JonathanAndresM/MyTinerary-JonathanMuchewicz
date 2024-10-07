@@ -17,6 +17,7 @@ const cities = [
 
 export default function Carousel() {
     const [currentSlider, setCurrentSlider] = useState(0);
+    const [isTransitioning, setIsTransitioning] = useState(false)
 
     const slides = [];
     for (let i = 0; i < cities.length; i += 4) {
@@ -25,11 +26,20 @@ export default function Carousel() {
 
 
     const buttonNext = () => {
-        setCurrentSlider((prev) => (prev + 1) % slides.length);
+        setIsTransitioning(true);
+        setTimeout(() => {
+            setCurrentSlider((prev) => (prev + 1) % slides.length);
+            setIsTransitioning(false);
+        }, 1000);
     };
 
     const buttonPrev = () => {
-        setCurrentSlider((currentSlider - 1 + slides.length) % slides.length)
+        setIsTransitioning(true);
+        setTimeout(() => {
+            setCurrentSlider((currentSlider - 1 + slides.length) % slides.length);
+            setIsTransitioning(false);
+        }, 1000);
+        
     };
 
     useEffect(() => {
@@ -44,10 +54,11 @@ export default function Carousel() {
 
     return (
         <div className="relative w-full px-5 py-5 h-96">
-            <h3 className="text-2xl text-center my-5 font-serif font-bold">Most popular cities</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 w-full">
+            <h3 className="text-2xl text-center my-5 font-serif font-bold">Popular cities on MyTinerary</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 w-full  transition-transform duration-1000 ease-in-out transform">
                 {slides[currentSlider].map((city, index) => (
-                    <div key={index} className="flex justify-center items-center relative rounded-md">
+                    <div key={index} className={`flex justify-center items-center relative rounded-md
+                ${isTransitioning ? "opacity-50" : "opacity-100"}`}>
                         <img src={city.img} alt={`City ${city.name}`}
                             className="w-48 h-36 sm:w-60 sm:h-36 md:w-96 md:h-36 lg:w-full lg:h-72
                             object-cover rounded-md" />

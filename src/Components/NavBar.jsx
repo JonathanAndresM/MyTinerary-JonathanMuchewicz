@@ -19,9 +19,9 @@ export default function NavBar() {
     return (
         <>
             <nav className='flex grow justify-between items-center px-5 py-2 bg-black bg-opacity-40 w-dvw fixed top-0'>
-                <div>
-                    <img src="..." alt="" />
-                    <p className='font-serif font-semibold text-3xl text-white'>My Tinerary</p>
+                <div className='flex'>
+                    <img src="https://cdn-icons-png.flaticon.com/512/826/826070.png" className='w-10 h-10' alt="" />
+                    <p className='font-serif font-semibold text-3xl text-white ml-3'>My Tinerary</p>
                 </div>
                 <div className='relative'>
                     <div className="md:hidden">

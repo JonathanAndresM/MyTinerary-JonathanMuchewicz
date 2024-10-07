@@ -5,7 +5,7 @@ import Footer from '../Components/Footer'
 export default function StandarLayout() {
     return (
         <>
-            <div className='min-h-dvh bg-gray-400 relative w-full'>
+            <div className='min-h-lvh bg-gray-400 relative w-full'>
                 <NavBar></NavBar>
                 <div><Outlet></Outlet></div>
                 <Footer></Footer>
