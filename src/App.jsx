@@ -15,10 +15,10 @@ const router = createBrowserRouter([
       {path: "/about", element: <About></About>},
       {path: "/contact", element: <Contact></Contact>},
       {path: "/home", element: <Home></Home>},
-      {path: "/*", element: <NotFound></NotFound>}
+      {path: "/*", element: <NotFound></NotFound>},
+      {path: "/cities", element: <Cities></Cities>},
     ]
   },
-  {path: "/cities", element: <Cities></Cities>},
 ])
 
 function App() {
