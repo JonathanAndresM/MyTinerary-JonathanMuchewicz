@@ -6,6 +6,7 @@ import About from './Pages/About';
 import Contact from './Pages/Contact';
 import NotFound from './Pages/NotFound';
 import StandarLayout from './Layouts/StandarLayout';
+import City from './Pages/City'
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
       {path: "/home", element: <Home></Home>},
       {path: "/*", element: <NotFound></NotFound>},
       {path: "/cities", element: <Cities></Cities>},
+      {path: "/city/:id", element: <City></City>},
     ]
   },
 ])
