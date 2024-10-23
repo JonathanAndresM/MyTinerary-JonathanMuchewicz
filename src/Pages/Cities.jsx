@@ -8,7 +8,11 @@ const Cities = () => {
 
   useEffect(() => {
     const fetchCities = async () => {
-      let url = `http://localhost:8080/api/cities/all?city=${search}`
+      let url = "http://localhost:8080/api/cities/all"
+
+      if (search){
+        url = `http://localhost:8080/api/cities/all?city=${search}`
+      }
 
       try {
         const response = await fetch(url)
