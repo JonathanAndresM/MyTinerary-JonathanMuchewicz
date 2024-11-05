@@ -8,7 +8,7 @@ function ButtonCities() {
         navegate(rut)
     }
     return (
-        <button onClick={() => handleClickCities()}
+        <button onClick={() => handleClickCities("/Cities")}
         className="mt-10 bg-red-600 bg-opacity-70 text-white px-4 py-2 rounded
         hover:shadow hover:shadow-black hover:bg-opacity-100 font-bold animate-bounce">
             Explore Cities
