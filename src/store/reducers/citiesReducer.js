@@ -15,7 +15,6 @@ export const citieReducer = createReducer(initialState, (builder) => {
             state.search = action.payload
         })
         .addCase(getCities.pending, (state) => {
-            console.log("State Pending")
             state.loading = true
             state.error = null
         })
@@ -26,11 +25,10 @@ export const citieReducer = createReducer(initialState, (builder) => {
             state.error = null
         })
         .addCase(getCities.rejected, (state, action) => {
-            console.log("State Error")
             state.loading = false
             state.error = action.error.message || "Error loading cities"
         })
         .addCase("SET_FILTERED_CITIES", (state, action) => {
-            state.cities = action.payload; // Actualiza solo las ciudades filtradas
+            state.cities = action.payload;
         })
 })
