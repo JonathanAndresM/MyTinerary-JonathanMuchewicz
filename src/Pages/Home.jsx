@@ -1,15 +1,38 @@
-import { useNavigate } from "react-router-dom";
-import Carousel from "../Components/Carousel";
+import { useNavigate } from "react-router-dom"
+import Carousel from "../Components/Carousel"
+import axios from "axios"
+import { useDispatch } from "react-redux"
+import { useEffect } from "react"
+import { setUser } from "../store/actions/authAction"
+
+const loginWithToken = async (token) => {
+    try {
+        const response = await axios.get("http://localhost:8080/api/auth/validateToken",
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                },
+            }
+        )
+        console.log(response.data)
+
+        return response.data.response
+    } catch (error) {
+        console.error("Error validando el token", error)
+        return null
+    }
+}
+
 
 function ButtonCities() {
-    const navegate = useNavigate();
+    const navigate = useNavigate()
 
     function handleClickCities(rut) {
-        navegate(rut)
+        navigate(rut)
     }
     return (
         <button onClick={() => handleClickCities("/Cities")}
-        className="mt-10 bg-red-600 bg-opacity-70 text-white px-4 py-2 rounded
+            className="mt-10 bg-red-600 bg-opacity-70 text-white px-4 py-2 rounded
         hover:shadow hover:shadow-black hover:bg-opacity-100 font-bold animate-bounce">
             Explore Cities
         </button>
@@ -17,6 +40,25 @@ function ButtonCities() {
 }
 
 export default function Home() {
+
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search)
+
+        const token = params.get("token")
+        if (token) {
+            localStorage.setItem("token", token)
+
+            loginWithToken(token)
+                .then((user) => {
+                    dispatch(setUser({ user, token }))
+                })
+        }
+        navigate("/home")
+    }, [dispatch, navigate])
+
 
     return (
         <>
@@ -31,5 +73,5 @@ export default function Home() {
             </div>
             <Carousel></Carousel>
         </>
-    );
+    )
 }

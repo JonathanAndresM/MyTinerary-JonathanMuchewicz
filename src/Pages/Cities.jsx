@@ -1,28 +1,28 @@
-import CitiesCard from "../Components/CitiesCard";
-import { useEffect} from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import { getCities, setSearch } from "../store/actions/citiesAction";
+import CitiesCard from "../Components/CitiesCard"
+import { useEffect} from "react"
+import { useDispatch, useSelector } from 'react-redux'
+import { getCities, setSearch } from "../store/actions/citiesAction"
 
 const Cities = () => {
-  const { allCities, cities, search, loading, error } = useSelector(state => state.citieReducer);
-  const dispatch = useDispatch();
+  const { allCities, cities, search, loading, error } = useSelector(state => state.citieReducer)
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getCities());
-  }, [dispatch]);
+    dispatch(getCities())
+  }, [dispatch])
 
   const handleInputChange = (e) => {
-    const searchTerm = e.target.value;
-    dispatch(setSearch(searchTerm));
+    const searchTerm = e.target.value
+    dispatch(setSearch(searchTerm))
 
     const filteredCities = allCities.filter(city =>
       city.city.toLowerCase().startsWith(searchTerm.toLowerCase())
-    );
-    dispatch({ type: 'SET_FILTERED_CITIES', payload: filteredCities });
-  };
+    )
+    dispatch({ type: 'SET_FILTERED_CITIES', payload: filteredCities })
+  }
 
   if (loading) {
-    return <div>Cargando...</div>;
+    return <div>Cargando...</div>
   }
 
   return (
