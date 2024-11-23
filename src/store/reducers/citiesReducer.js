@@ -20,7 +20,7 @@ export const citieReducer = createReducer(initialState, (builder) => {
         })
         .addCase(getCities.fulfilled, (state, action) => {
             state.loading = false
-            state.allCities = action.payload;
+            state.allCities = action.payload
             state.cities = action.payload
             state.error = null
         })
@@ -29,6 +29,6 @@ export const citieReducer = createReducer(initialState, (builder) => {
             state.error = action.error.message || "Error loading cities"
         })
         .addCase("SET_FILTERED_CITIES", (state, action) => {
-            state.cities = action.payload;
+            state.cities = action.payload
         })
 })
