@@ -46,7 +46,7 @@ const Cities = () => {
             value={search}
             onChange={handleInputChange} />
         </div>
-        <div className='p-3 min-h-[40vh] max-w-full'>
+        <div className='p-3 min-h-[40vh] max-w-full my-6'>
           <div className="flex flex-wrap justify-evenly w-full h-full">
           {error ? (
               <p className="text-center text-3xl text-red-500 font-bold py-36 px-5 bg-black bg-opacity-50 rounded-3xl">

@@ -15,6 +15,7 @@ import { useEffect, useState } from 'react'
 import SignUp from './Pages/SignUp'
 import SignRoute from './Components/SignRoute'
 import PrivateRoute from './Components/PrivateRoute'
+import Profile from './Pages/Profile'
 
 
 const router = createBrowserRouter([
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
       { path: "/city/:id", element: <PrivateRoute><City></City></PrivateRoute> },
       { path: "/sign-in", element: <SignRoute><SignIn></SignIn></SignRoute> },
       { path: "/sign-up", element: <SignRoute><SignUp></SignUp></SignRoute> },
+      { path: "/profile", element: <PrivateRoute><Profile></Profile></PrivateRoute> },
     ]
   },
 ])
