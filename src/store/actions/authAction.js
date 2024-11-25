@@ -11,13 +11,12 @@ export const login = createAsyncThunk("login", async ({ email, password }, { rej
     try {
         const credentials = { email, password }
         const response = await axios.post("http://localhost:8080/api/auth/signIn", credentials)
-        console.log("Datos de la respuesta del backend:", response.data)
         localStorage.setItem("token", response.data.token)
         return {
             user: response.data.user,
             token: response.data.token,
         }
     } catch (error) {
-        return rejectWithValue(error.response?.data?.message || "Error al Iniciar Sesión")
+        return rejectWithValue(error.response?.data?.message || "Login Error credentials invalid")
     }
 })

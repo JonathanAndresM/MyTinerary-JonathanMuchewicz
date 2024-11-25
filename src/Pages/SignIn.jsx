@@ -36,9 +36,7 @@ export default function SignIn() {
                     >Welcome to MyTinerary - Login</h2>
                 </div>
                 {authState.loading && <p>Loading...</p>}
-                {authState.error && <p
-                    className="text-red-600 text-base font-semibold text-shadow-full mt-5"
-                >{authState.error}</p>}
+
                 <div className="max-w-xl w-full mt-6 bg-black bg-opacity-25 rounded-xl p-4">
                     <form onSubmit={handleLogin}>
                         <div className="mb-5">
@@ -56,7 +54,11 @@ export default function SignIn() {
                                 placeholder="password" required />
                         </div>
                         <button type="submit"
-                            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Login</button>
+                            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
+                            Login</button>
+                        {authState.error && <p
+                            className="text-red-600 text-base font-semibold text-shadow-full mt-5"
+                        >{authState.error}</p>}
                     </form>
                     <button type="submit" onClick={handleLoginGoogle}
                         className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center mt-5">

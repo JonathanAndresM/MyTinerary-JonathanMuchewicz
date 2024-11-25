@@ -14,8 +14,6 @@ const loginWithToken = async (token) => {
                 },
             }
         )
-        console.log(response.data)
-
         return response.data.response
     } catch (error) {
         console.error("Error validando el token", error)
