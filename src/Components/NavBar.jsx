@@ -67,11 +67,18 @@ const BtnLogin = () => {
 
 const PhotoUser = () => {
     const user = useSelector((state) => state.authReducer?.user)
+    const navigate = useNavigate()
+
+    function profileUser() {
+        navigate("/profile")
+    }
 
     return (
-            <div>
-                <img className="w-10 rounded-full" src={user.photo || 'https://via.placeholder.com/40'} alt={user.name || 'User'} />
-            </div>
+        <div className='m-2'>
+            <button onClick={profileUser} className='focus:outline-none'>
+                <img className="w-10 h-10 object-cover rounded-full" src={user?.photo || 'https://via.placeholder.com/40'} alt={user?.name || 'User'} />
+            </button>
+        </div>
     )
 }
 
