@@ -5,9 +5,11 @@ import { useDispatch } from "react-redux"
 import { useEffect } from "react"
 import { setUser } from "../store/actions/authAction"
 
+const uri_render = "https://mytinerary-api-udyl.onrender.com"
+
 const loginWithToken = async (token) => {
     try {
-        const response = await axios.get("http://localhost:8080/api/auth/validateToken",
+        const response = await axios.get(uri_render+"/api/auth/validateToken",
             {
                 headers: {
                     Authorization: `Bearer ${token}`

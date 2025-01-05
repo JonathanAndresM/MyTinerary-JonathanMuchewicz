@@ -1,6 +1,8 @@
 import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const uri_render = "https://mytinerary-api-udyl.onrender.com"
+
 export const setSearch = createAction("SET_SEARCH")
 
 export const getCities = createAsyncThunk("GET_CITIES", async (search = "") => {
@@ -9,8 +11,8 @@ export const getCities = createAsyncThunk("GET_CITIES", async (search = "") => {
         throw new Error("User is not logged in.")
     }
     const url = search
-    ? `http://localhost:8080/api/cities/all?city=${search}`
-    : "http://localhost:8080/api/cities/all"
+    ? `${uri_render}/api/cities/all?city=${search}`
+    : `${uri_render}/api/cities/all`
     try {
         const response = await axios.get(url, {
             headers: {

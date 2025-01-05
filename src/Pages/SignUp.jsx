@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import axios from 'axios'
 
+const uri_render = "https://mytinerary-api-udyl.onrender.com"
+
 const countries = [
     "Argentina",
     "Brazil",
@@ -38,7 +40,7 @@ const SignUp = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post('http://localhost:8080/api/auth/signup', formData)
+            const response = await axios.post(uri_render+'/api/auth/signup', formData)
             setMessage("User registered successfully!", response.data.response)
             setErrors({})
             setFormData(initialState)

@@ -1,6 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const uri_render = "https://mytinerary-api-udyl.onrender.com"
+
 export const getItineraries = createAsyncThunk("itineraries/getItineraries",
     async (cityId, { rejectWithValue }) => {
         const token = localStorage.getItem("token")
@@ -10,7 +12,7 @@ export const getItineraries = createAsyncThunk("itineraries/getItineraries",
         }
 
         try {
-            const response = await axios.get(`http://localhost:8080/api/itineraries/city/${cityId}`, {
+            const response = await axios.get(uri_render+`/api/itineraries/city/${cityId}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

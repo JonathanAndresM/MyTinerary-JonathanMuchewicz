@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { login } from "../store/actions/authAction"
 import { useNavigate } from "react-router-dom"
 
+const uri_render = "https://mytinerary-api-udyl.onrender.com"
 
 export default function SignIn() {
 
@@ -25,7 +26,7 @@ export default function SignIn() {
     }
 
     const handleLoginGoogle = () => {
-        window.location.href = "http://localhost:8080/api/auth/signin/google"
+        window.location.href = uri_render+"/api/auth/signin/google"
     }
 
     return (
